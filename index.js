@@ -3,20 +3,20 @@ const bodyParser = require('body-parser');
 const app = express();
 const userRoutes = require('./routes/userRoutes');
 const taskRoutes = require('./routes/taskRoutes');
+
 require('dotenv').config();
 require('./db');
-const port = process.env.PORT || 8001;
+const PORT = 8000;
 
 app.use(bodyParser.json());
 app.use('/users', userRoutes);
-app.use('/task', taskRoutes);
+app.use('/tasks', taskRoutes);
 
 app.get('/', (req, res) => {
-  res.send({
-    message: 'Api is working',
+  res.json({
+    message: 'Task Manager API is working!',
   });
 });
-
-app.listen(port, () => {
-  console.log(`Server is running at ${port}`);
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}.`);
 });

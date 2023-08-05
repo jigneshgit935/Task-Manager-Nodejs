@@ -4,11 +4,10 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-router.get('', (req, res) => {
-  res.send('User routes are working');
+router.get('/', (req, res) => {
+  res.send('User routes are working!');
 });
 
-// Register user
 router.post('/register', async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -20,8 +19,6 @@ router.post('/register', async (req, res) => {
     res.status(400).send({ error: err });
   }
 });
-
-// Login user
 router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -50,4 +47,6 @@ router.post('/login', async (req, res) => {
   }
 });
 
+// register a user
+// login a user
 module.exports = router;
